@@ -1,0 +1,185 @@
+body
+{
+	background-color: #232726 ;
+}
+
+button
+{
+	display: inline-block;
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-top: 50px;
+	width: 100px;
+	height: 55px;
+	text-align: center;
+	border-radius: 5px;
+	color: white;
+	border: 0;
+	font-size: 20px;
+	font-family: Avenir;
+	transition: 0.3s;
+}
+
+.footer
+{
+	color: #3D4140;
+	font-family: Avenir;
+	position: fixed;
+  	left: 0;
+ 	bottom: 0;
+  	width: 100%;
+  	text-align: center;
+}
+
+.logo
+{
+	vertical-align: middle;
+	width: 8%;
+	height: 8%;
+}
+
+.logotxt
+{
+	color: white;
+	font-family: Avenir;
+	margin-left: 25px;
+	font-size: 20px
+}
+
+.header
+{
+	display: inline-block;
+	padding: 25px;
+}
+
+.container
+{
+	position: relative;
+	text-align: center;
+}
+
+.newspaper
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 45%;
+	width: 55%;
+}
+
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 601px) {
+  .headline {
+   font-size: 120%;
+  }
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  .headline {
+    font-size: 50%;
+  }
+  .footer {
+    font-size: 8px;
+  }
+}
+
+.headline
+{
+	position: absolute;
+	font-family: Helvetica;
+	top: 33%;
+  	left: 50%;
+  	width: 40%;
+  	transform: translate(-50%, -50%);
+}
+
+.button-container
+{
+	display: flex;
+	justify-content: center;
+}
+
+.window-button
+{
+	margin-top: 10px !important;
+	background-color: #95A5A6;
+}
+
+.window-button:hover
+{
+	background-color: #B1BDBD;
+}
+
+#responselink
+{
+	display: inline-block;
+}
+
+.real
+{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: #5C9CEE;
+}
+
+.real:hover
+{
+	transform: scale(1.2);
+	background-color: #8AB8F3 ;
+}
+
+.fake
+{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: #EE5C87;
+}
+
+.fake:hover
+{
+	transform: scale(1.2);
+	background-color: #F38CAB;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  border-radius: 15px;
+  text-align: center;
+  font-family: Avenir;
+}
+
+.modal-image {
+	height: 20%;
+	width: 20%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

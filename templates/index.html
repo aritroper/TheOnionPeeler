@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<html>
+	<hd>
+		<div class="header">
+			<img class="logo" src="/static/logo.png" alt="logo">
+			<span class="logotxt">onion peeler</span>
+		</div>
+	</hd>
+	<body>
+		<div class="container animated jackInTheBox">
+			<img class="newspaper" src="/static/newspaper.png" alt="newspaper">
+			<h1 class="headline" id="headline">{{headline}}</h1>
+		</div>
+		<div class="button-container">
+			<button class="real">Real</button>
+			<button class="fake">Fake</button>
+		</div>
+		<div class="footer">
+			<p>All headlines fetched from r/theonion and r/nottheonion.</p>
+		</div>
+	</body>
+	<!-- The Modal -->
+	<div id="response" class="modal">
+  		<!-- Modal content -->
+  		<div class="modal-content">
+  			<img class="modal-image" src="/static/logo.png" alt="response">
+    		<p><a id="responselink" href ="http://www.theonionpeeler.com" target="_blank">Response failed to load.</a></p>
+    		<button id="next" onclick="window.location = 'http://127.0.0.1:5000/'" class="window-button">Next!</button>
+  		</div>
+	</div>
+</html>
+
+<script>
+	$(document).ready(function(){
+
+		function loadWindow(){
+			$('#response').css("display", "block")
+			$('#response').addClass("animated fadeIn")
+			$('.modal-content').addClass("animated fadeInUp")
+		}
+
+		$('.real').click(function(e){
+			e.preventDefault();
+			$.ajax({
+				type: 'GET',
+				url: '/guess',
+				success: function(data){
+					if(data["is_true"]){
+						$('#responselink').html("You were right! This headline is real.");
+						$('#responselink').attr("href", data["link"])
+						$('.modal-image').attr("src","/static/correct.png");
+					}
+					else{
+						$('#responselink').html("You were wrong! This headline was made up.");
+						$('#responselink').attr("href", data["link"])
+						$('.modal-image').attr("src","/static/wrong.png");
+					}
+
+					loadWindow();
+				}
+			});
+		});
+
+		$('.fake').click(function(e){
+			e.preventDefault();
+			$.ajax({
+				type: 'GET',
+				url: '/guess',
+				success: function(data) {
+					if(!data["is_true"]){
+						$('#responselink').html("You were right! This headline was made up.");
+						$('#responselink').attr("href", data["link"])
+						$('.modal-image').attr("src","/static/correct.png");
+					}
+					else{
+						$('#responselink').html("You were wrong! This headline is real.");
+						$('#responselink').attr("href", data["link"])
+						$('.modal-image').attr("src","/static/wrong.png");
+					}
+
+					loadWindow();
+				}
+			});
+		});
+	});
+</script>
